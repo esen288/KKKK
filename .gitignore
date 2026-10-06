@@ -5,3 +5,8 @@ data/
 test-results/
 playwright-report/
 preview-dist/
+hostinger/private/config.php
+hostinger/private/config-*.php
+hostinger/private/runtime/
+hostinger/private/install.lock
+hostinger/uploads/*.webp

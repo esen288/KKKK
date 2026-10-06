@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "^(?![a-f0-9]{32}\.webp$).*$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.webp$">
+    ForceType image/webp
+</FilesMatch>

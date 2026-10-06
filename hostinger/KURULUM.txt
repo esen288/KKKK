@@ -1,0 +1,86 @@
+NOVAX ÇATI SİSTEMLERİ — HOSTINGER PHP / MYSQL SÜRÜMÜ
+
+Bu paket standart PHP + MySQL web hosting içindir. Node.js, npm, GitHub bağlantısı,
+Render veya terminal gerektirmez. Domainin yanında WEB HOSTING hizmetiniz olmalı.
+PHP 8.2+ (önerilen: 8.3/8.4), MySQL 5.7+/MariaDB 10.4+, pdo_mysql, mbstring ve
+WebP destekli GD eklentileri gerekir. Standart Hostinger Web Hosting kullanılabilir;
+Website Builder paketine PHP dosyası yüklenmez.
+
+1. DOSYALARI YÜKLEYİN
+Hostinger → Websites → sitenizin Dashboard/Manage bölümü → Files → File Manager.
+ZIP içindeki public_html klasörünün İÇERİĞİNİ hostingdeki public_html içine koyun.
+Sonuç: public_html/index.php, public_html/admin.php, public_html/private/...
+public_html/public_html şeklinde iç içe olmamalı. .htaccess ve .user.ini de taşınmalı.
+Önceden bir siteniz varsa üzerine yazmadan önce dosya ve veritabanı yedeğini alın.
+Yeni hostingin varsayılan index.html/default.php dosyası açılıyorsa onu yedekleyip
+kaldırın; uygulamanın index.php dosyası açılmalı. Yüklediğiniz ZIP'i açtıktan sonra
+sunucudan silin. ONIZLEME.html ve BASLA.html dosyalarını sunucuya yüklemek gerekmez.
+
+2. PHP VE HTTPS
+Hostinger panelinde PHP Configuration bölümünden PHP 8.3 veya 8.4 seçin.
+pdo_mysql, mbstring, gd eklentileri açık olmalı. EXIF eklentisi fotoğraf yönünü düzeltir.
+SSL sertifikasını ve Force HTTPS özelliğini açın. Kurulumu HTTPS adresinden yapın.
+Bu sürümde SITE_URL, TRUST_PROXY veya ADMIN_PASSWORD ortam değişkeni girilmez.
+
+3. MYSQL VERİTABANI OLUŞTURUN
+Hostinger → Websites → Dashboard → Databases → Management (menü adı dile göre değişebilir).
+Yeni bir MySQL veritabanı ve kullanıcı oluşturun; kullanıcıya veritabanı yetkisini verin.
+Tam veritabanı adını, kullanıcı adını ve seçtiğiniz şifreyi saklayın.
+Örn. isimlerin başına Hostinger'ın u123456789_ gibi bir önek eklemesi normaldir.
+Sunucu çoğunlukla localhost, port 3306'dır; panel farklı bilgi veriyorsa onu kullanın.
+Veritabanı şifresi admin şifresinden FARKLIDIR. Şifrelerinizi sohbetten göndermeyin.
+
+4. KURULUM KİLİDİNİ AÇIN
+Dosya Yöneticisi → public_html/private/install-key.php dosyasını Edit ile açın.
+En alttaki return ''; satırında iki tek tırnağın arasına kendinize özel en az
+20 harf ve rakamdan oluşan bir kurulum anahtarı yazın. Tırnak ve noktalı virgül kalsın.
+Bu anahtarı kurulum formuna da yazacaksınız. Dosyayı kaydedin.
+Anahtar, siteyi sizden önce başka birinin kurmasını engeller. Kalıcı giriş şifresi değildir.
+
+5. TARAYICIDAN KURUN
+Sitenizin HTTPS adresinin sonuna /install.php ekleyin.
+Kurulum anahtarı, MySQL bilgileri, admin kullanıcı adı ve admin şifresini doldurun.
+Admin şifresini en az 12 karakter seçin; ASCII harf/rakam/sembol kullanabilirsiniz.
+Kurulumu tamamla düğmesine basın. Tablolar otomatik oluşturulur. Mevcut nv_ tabloları
+bulunursa kurulum verileri silmeden durur; ayrı boş bir veritabanı kullanın.
+Başarılı kurulumdan sonra kurulum sayfası kilitlenir; anahtar dosyası kaldırılır.
+
+6. ADMİN GİRİŞİ
+Adres: https://SIZIN-DOMAININIZ/admin.php (kısa /admin adresi de yönlendirilir).
+Kullanıcı adı ve şifre: 5. adımda SİZİN belirlediğiniz bilgiler.
+- Proje & fotoğraflar: ekle, düzenle, değiştir, sil.
+- JPG/PNG/WebP: en fazla 8 MB ve 20 megapiksel; otomatik WebP ve 1800 px dönüşümü.
+- Her proje kaydı bir fotoğraf içerir; aynı kategoriye birden fazla kayıt ekleyebilirsiniz.
+- Hizmetler: Sunuyoruz/Sunmuyoruz durumunu ve açıklamayı düzenleyin.
+- İşletme & iletişim: telefon, WhatsApp, adres, çalışma saatleri ve metinler.
+- Şifre değiştir: şifre değişince bütün eski oturumlar geçersiz olur.
+Telefon ve WhatsApp başlangıçta 0506 092 18 06 olarak ayarlanmıştır.
+Başlangıç görselleri yapay zekâyla üretilmiş TEMSİLİ mimari görsellerdir; müşteri işi değildir.
+Kendi iş fotoğraflarınızı yükleyince temsili etiketi kaldırılır. Gerçekte sunmadığınız
+hizmetleri panelden değiştirin veya silin. Adres/bölge/saat alanlarını doldurun.
+
+7. KALICILIK VE YEDEK
+Fotoğraflar uploads/ klasöründe, içerikler ve şifre özeti MySQL'de saklanır.
+Normal PHP sunucu yeniden başlatması kayıtları sıfırlamaz. Hosting hesabını, dosyaları
+veya veritabanını silmek ya da eski bir yedeği geri yüklemek veri kaybına neden olabilir.
+Hostinger'dan hem DOSYA hem MYSQL yedeği alın. private/config.php bağlantı bilgilerini
+içerir; koruyun ve paylaşmayın. Güncellemede bu dosyanın ve uploads/ içeriğinin üzerine
+yazmayın. Paket bunları içermez. Yeni dosyaları mevcut public_html içine birleştirin;
+klasörü silip yeniden yüklemeyin. Yönetici şifresini unutursanız veritabanını silmeyin;
+güvenli parola yenilemesi için destek alın.
+
+SORUN GİDERME
+- Boş/hata sayfası: PHP 8.2+, pdo_mysql, mbstring, gd ve hosting hata kaydını kontrol edin.
+- Kurulum anahtarı: private/install-key.php boşsa form açılmaz. Anahtarı kendi dosyanızda yazın.
+- MySQL hatası: tam veritabanı/kullanıcı adlarını ve veritabanı şifresini kontrol edin.
+- Fotoğraf yüklenmiyor: upload_max_filesize en az 8M, post_max_size en az 10M,
+  memory_limit 256M. PHP Configuration üzerinden ayarlayın; .user.ini birkaç dakika sürebilir.
+- private ve uploads PHP tarafından yazılabilir olmalı. 777 izin vermeyin;
+  Hostinger'ın dosya sahipliği/izin onarımını kullanın.
+- Sayfa yenilenmiyor: tarayıcı ve Hostinger önbelleğini temizleyin.
+- .htaccess kaynaklı 500 hatası: hosting desteğine Apache/LiteSpeed .htaccess
+  yönergelerini gösterin; private klasöründeki erişim engelini kaldırmayın.
+
+Bu paket PHP 8.4, MariaDB 11.8 ve Apache üzerinde test edildi. Hostinger hesabınızda
+kurulum/yayın henüz yapılmadı. Paket dosyaları web hostinginize yüklendiğinde kurulabilir.
+Yerel font lisansları assets/fonts ve assets/FONT-LICENSE.txt içindedir.

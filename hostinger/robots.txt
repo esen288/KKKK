@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.php
+Disallow: /admin
+Disallow: /install.php
+Disallow: /api.php
+Disallow: /private/

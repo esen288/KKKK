@@ -1,0 +1,26 @@
+<?php
+declare(strict_types=1);
+define('NOVAX',true);
+require __DIR__.'/private/core.php';
+security_headers();header('Cache-Control: no-store');
+if(is_installed()){http_response_code(404);echo 'Kurulum tamamlanmış. Yönetim paneli: admin.php';exit;}
+$error='';$success=false;
+try {
+    ensure_https();begin_session();
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+        csrf_check(is_string($_POST['csrf']??null)?$_POST['csrf']:null);
+        require __DIR__.'/private/installer.php';install_site($_POST);$success=true;
+    }
+}catch(UserError $e){$error=$e->getMessage();http_response_code($e->status);}
+catch(PDOException $e){$error='MySQL bağlantısı veya tablo oluşturma başarısız. Veritabanı adı, kullanıcı adı, şifre ve sunucuyu Hostinger panelinden kontrol edin. Kullanıcının bu veritabanı üzerinde tam yetkisi olmalı.';http_response_code(400);error_log('Novax installer: database error code '.$e->getCode());}
+catch(Throwable $e){$error='Kurulum tamamlanamadı. PHP sürümünü, eklentileri ve private/uploads klasörlerinin yazma izinlerini kontrol edin.';http_response_code(500);error_log('Novax installer: '.get_class($e).' code '.$e->getCode());}
+$keyFile=__DIR__.'/private/install-key.php';$key=is_file($keyFile)?require $keyFile:'';
+$unlocked=is_string($key)&&strlen($key)>=20;
+function h(string $v): string{return htmlspecialchars($v,ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');}
+function old(string $key,string $default=''): string{return h(is_string($_POST[$key]??null)?$_POST[$key]:$default);}
+?><!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Novax | Site kurulumu</title><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./admin.css"><link rel="stylesheet" href="./install.css"><link rel="icon" href="./assets/favicon.svg"></head><body class="admin-page"><main class="installer"><a class="admin-brand" href="./">⌂ NOVAX<small>ÇATI SİSTEMLERİ</small></a><p class="eyebrow">HOSTINGER KURULUMU</p>
+<?php if($success): ?><h1>Siteniz hazır.</h1><p>Veritabanı ve yönetici hesabı oluşturuldu. Kurulum ekranı kilitlendi.</p><a class="button" href="./admin.php">Admin paneline gir ↗</a><p class="help">Kurulumda belirlediğiniz kullanıcı adı ve şifreyle giriş yapın. İş fotoğraflarınızı ve gerçek hizmetlerinizi panelden ekleyebilirsiniz.</p>
+<?php else: ?><h1>Bir kez kurun,<br>panelden yönetin.</h1><p>Bu bilgiler yalnızca hostinginizde saklanır. Veritabanı şifresi ile yönetici şifresi farklıdır; hiçbirini sohbet üzerinden paylaşmayın.</p>
+<?php if($error): ?><p class="notice error" role="alert"><?=h($error)?></p><?php endif; ?>
+<?php if(!$unlocked): ?><div class="notice"><h2>Önce kurulum kilidini açın</h2><ol><li>Hostinger Dosya Yöneticisi’nde <strong>public_html → private → install-key.php</strong> dosyasını düzenleyin.</li><li>En alttaki <code>return '';</code> satırındaki iki tırnağın arasına, size özel en az 20 harf ve rakamdan oluşan bir kurulum anahtarı yazın. Tırnakları ve noktalı virgülü koruyun.</li><li>Dosyayı kaydedip bu sayfayı yenileyin. Aynı anahtarı açılacak forma gireceksiniz.</li></ol><p>Bu kilit, siteyi sizden önce başka birinin kurmasını engeller. Kurulum tamamlanınca anahtar dosyası kaldırılır.</p></div>
+<?php else: ?><form method="post" autocomplete="off" class="form-card"><input type="hidden" name="csrf" value="<?=h($_SESSION['csrf']??'')?>"><h2>1. Kurulum anahtarı</h2><label>Dosyaya yazdığınız kurulum anahtarı<input type="password" name="install_key" minlength="20" maxlength="256" required autocomplete="off"></label><h2>2. MySQL bilgileri</h2><p class="help">Hostinger → Websites → Dashboard → Databases → Management bölümünde bir veritabanı oluşturun. Panelde görünen tam adları kullanın.</p><div class="form-grid"><label>Veritabanı sunucusu<input name="db_host" required value="<?=old('db_host','localhost')?>" maxlength="255"></label><label>Veritabanı portu<input type="number" name="db_port" required min="1" max="65535" value="<?=old('db_port','3306')?>"></label><label>Veritabanı adı<input name="db_name" required value="<?=old('db_name')?>" maxlength="128" placeholder="u123456789_novax"></label><label>Veritabanı kullanıcı adı<input name="db_user" required value="<?=old('db_user')?>" maxlength="128" placeholder="u123456789_novax"></label></div><label>Veritabanı şifresi<input type="password" name="db_password" required maxlength="512" autocomplete="off"><small>Hostinger’da veritabanını oluştururken belirlediğiniz şifre.</small></label><h2>3. Yönetici hesabınız</h2><label>Admin kullanıcı adı<input name="admin_username" required minlength="3" maxlength="60" value="<?=old('admin_username','admin')?>" autocomplete="username" pattern="[a-zA-Z0-9_.\-]{3,60}"></label><div class="form-grid"><label>Admin şifresi<input type="password" name="admin_password" required minlength="12" maxlength="72" autocomplete="new-password"></label><label>Admin şifresi tekrar<input type="password" name="admin_confirm" required minlength="12" maxlength="72" autocomplete="new-password"></label></div><p class="help">Şifre en az 12 karakter olmalı. Bu şifreyi siteye girişte kullanacaksınız.</p><button class="button" type="submit">Kurulumu tamamla ↗</button></form><?php endif; ?><?php endif; ?></main></body></html>

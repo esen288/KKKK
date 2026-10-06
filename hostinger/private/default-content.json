@@ -1,0 +1,69 @@
+{
+  "settings": {
+    "brand": "Novax Çatı Sistemleri",
+    "phone": "05060921806",
+    "whatsapp": "905060921806",
+    "area": "Hizmet bölgesi ve keşif için bize ulaşın.",
+    "address": "",
+    "hours": "Çalışma saatleri için bize ulaşın.",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Novax+%C3%87at%C4%B1+Sistemleri+39.7467374,32.5710355",
+    "about": "Her çatının ihtiyacı farklıdır. Novax Çatı Sistemleri olarak mevcut çatınızı, beklentilerinizi ve kullanılacak malzemeleri birlikte değerlendiriyoruz. İşin kapsamını konuşalım; yapınıza uygun çözümü birlikte belirleyelim.",
+    "heroTitle": "Güven, en üstten başlar.",
+    "heroText": "Çatınız yalnızca yapınızı tamamlamaz; yaşamınızı da korur. Yapınıza uygun çatı, yenileme ve yalıtım çözümlerini birlikte planlayalım."
+  },
+  "services": [
+    {
+      "id": "ec4886c4-753d-47a6-8b89-3d37ebddd020",
+      "title": "Çatı yapımı & yenileme",
+      "description": "Yeni çatı uygulaması ve mevcut çatının yenilenmesi hakkında bilgi alın. Yapınıza uygun kapsam keşif sırasında netleştirilir.",
+      "available": 1
+    },
+    {
+      "id": "5720e75f-ee50-45ad-b3d5-d1e7331a1ca6",
+      "title": "Çatı onarımı",
+      "description": "Hasarlı kaplama, bağlantı ve detayların değerlendirilmesi için bizimle iletişime geçin.",
+      "available": 1
+    },
+    {
+      "id": "22c988be-cb79-4509-aaf5-f9aac6f091c0",
+      "title": "Isı & su yalıtımı",
+      "description": "Çatınızın yalıtım ihtiyacını ve uygulanabilecek malzeme seçeneklerini birlikte değerlendirelim.",
+      "available": 1
+    },
+    {
+      "id": "49cdabde-038f-4606-88d0-59b99dd3d8fe",
+      "title": "Oluk & yağmur sistemleri",
+      "description": "Yağmur suyunun yönlendirilmesi, oluk ve iniş detayları için çözüm seçeneklerini konuşalım.",
+      "available": 1
+    }
+  ],
+  "projects": [
+    {
+      "id": "1eb9cddc-57cd-414c-95db-58657c371e22",
+      "title": "Detaylarda tamamlanan bir bütün",
+      "category": "Çatı detayları",
+      "description": "Çatı ve yağmur sistemi bütünlüğünü anlatan temsili çalışma. Tamamlanmış müşteri projesi değildir.",
+      "image": "assets/roof-detail.webp",
+      "demo": 1,
+      "created": 1791312771925
+    },
+    {
+      "id": "105d9233-f575-4fe9-ae4d-afe8503a2c33",
+      "title": "Modern mimarinin güçlü çizgisi",
+      "category": "Metal çatı",
+      "description": "Metal çatı tasarımını anlatan temsili çalışma. Malzeme ve uygulama uygunluğu keşifte değerlendirilir.",
+      "image": "assets/roof-hero.webp",
+      "demo": 1,
+      "created": 1791312771924
+    },
+    {
+      "id": "b777c56e-4150-404e-af6b-930b8b037ddd",
+      "title": "Kiremidin zamansız karakteri",
+      "category": "Çatı sistemleri",
+      "description": "Kiremit çatı görünümünü anlatan temsili çalışma. Tamamlanmış müşteri projesi değildir.",
+      "image": "assets/roof-tile.webp",
+      "demo": 1,
+      "created": 1791312771923
+    }
+  ]
+}
