@@ -1,0 +1,27 @@
+{
+  "name": "novax-cati-sistemleri",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Novax Çatı Sistemleri web sitesi ve yönetim paneli",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --watch --env-file-if-exists=.env server.js",
+    "test": "node --test test/*.test.js",
+    "admin:reset": "node --env-file-if-exists=.env scripts/reset-admin.js",
+    "setup": "node scripts/setup.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.2",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0"
+  }
+}

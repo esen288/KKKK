@@ -1,0 +1,2 @@
+/* Locally bundled DejaVu symbols; no external font requests. */
+@font-face{font-family:NovaxSymbols;src:url('/assets/symbols.woff') format('woff');font-style:normal;font-weight:100 900;font-display:swap;unicode-range:U+2190-21FF,U+2302,U+2630,U+260E,U+25A7,U+2699,U+25C7,U+25CF,U+2715,U+2212}

@@ -1,0 +1,6 @@
+# Alan adının A/AAAA kayıtlarını sunucuya yönlendirin.
+# Caddy sunucuda çalışır; uygulama 127.0.0.1:3000 üzerinde dinler.
+alanadiniz.com, www.alanadiniz.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3000
+}

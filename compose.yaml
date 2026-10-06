@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATA_DIR: /app/data
+      TRUST_PROXY: "1"
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - novax_data:/app/data
+volumes:
+  novax_data:
