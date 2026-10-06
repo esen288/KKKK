@@ -102,3 +102,11 @@ Tarayıcı testi: Chromium kuruluysa `CHROMIUM_PATH=/chromium/tam/yolu npx playw
 - `package-lock.json`: tekrarlanabilir bağımlılık kurulumu.
 
 DejaVu sembol fontunun lisansı `public/assets/FONT-LICENSE.txt` içindedir. Mimari illüstrasyonlar bu proje için çizildi.
+
+## Telefonda tasarım önizlemesi (GitHub Pages)
+
+`gh-pages` dalı yalnızca statik tasarım önizlemesini içerir. GitHub deposunda **Settings → Pages → Deploy from a branch → gh-pages → / (root) → Save** seçilerek etkinleştirilir. GitHub Pages destekli bir hesap/depo gerekir; özel depolarda plan kısıtı olabilir. Yayın başarıyla tamamlanmadan canlı URL çalışmaz.
+
+Önizlemede ana sayfa, kategori filtreleri, proje detayları, arama ve WhatsApp bağlantıları çalışır. **Panel önizlemesi** gerçek panelin ekran görüntüsüdür; düzenleme ve kayıt işlemi yapmaz. Tam işlevli panel için yukarıdaki Node.js hosting kurulumunu kullanın. GitHub Pages veritabanı veya Node.js sunucusu çalıştırmaz.
+
+Önizlemeyi yeniden oluşturmak için bağımlılıkları kurup Chromium bulunan bir ortamda `npm run preview:build` çalıştırın. Gerekirse `CHROMIUM_PATH` tanımlayın. Çıktı `preview-dist/` klasöründedir. Bu işlem başlangıçtaki temsili verileri geçici sunucudan dışa aktarır; gerçek veri klasörüne dokunmaz, şifre/oturum/veritabanı dışa aktarmaz.

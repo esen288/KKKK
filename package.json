@@ -12,7 +12,8 @@
     "dev": "node --watch --env-file-if-exists=.env server.js",
     "test": "node --test test/*.test.js",
     "admin:reset": "node --env-file-if-exists=.env scripts/reset-admin.js",
-    "setup": "node scripts/setup.js"
+    "setup": "node scripts/setup.js",
+    "preview:build": "node scripts/build-preview.js"
   },
   "dependencies": {
     "express": "^5.1.0",
